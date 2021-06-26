@@ -39,8 +39,7 @@ namespace MamaLis
 			this._employeeID = employeeID;
 			this._jobTitle = jobTitle;
 			this._hoursOfWork = 0; //new employee worked 0 hours yet.
-			this.employeeDegree = new Degree(ifExpert, ifMakeDecisions, extraRisk);
-
+			this.employeeDegree = new Degree(ifExpert, ifMakeDecisions, extraRisk);			  
 		} 
 		
 
@@ -50,6 +49,28 @@ namespace MamaLis
 		{
 			return 5;//(this._hoursOfWork * Consts.hourSalaryAvg); 
 		} 
+
+		public void SetHoursOfWork()
+        {
+			int start, end;
+			Console.WriteLine("When do you start working today ? please enter an hour (0-24)");
+			start = int.Parse(Console.ReadLine());
+			Console.WriteLine("When do you end working today ? please enter an hour (0-24)");
+			end = int.Parse(Console.ReadLine());
+
+			this._hoursOfWork += (end-start);
+
+		}
+
+		public void PrintEmployee()
+        {
+			Console.WriteLine("ID: "+this._employeeID);
+			Console.WriteLine("Name: "+this._employeeName);
+			Console.WriteLine("Job Title :"+this._jobTitle);
+			Console.WriteLine("Hours of work: "+this._hoursOfWork.ToString());
+			Console.WriteLine("Salary :" + GetSalary());
+			//Console.WriteLine("Degrees :");
+		}
 
 		    
 	}
