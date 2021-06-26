@@ -6,6 +6,12 @@ namespace MamaLis
 {
     class Manager : Employee
     {
-        public override float GetSalary() { return this._salary; }
+
+
+        public Manager(string employeeName, string employeeID, string jobTitle, bool ifExpert, bool ifMakeDecisions, float extraRisk) : base(employeeName, employeeID, jobTitle, ifExpert, ifMakeDecisions, extraRisk)
+        {
+            //
+        }
+        public override float GetSalary() { return 17999; }
     }
 }

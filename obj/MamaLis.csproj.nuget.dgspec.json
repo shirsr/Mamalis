@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\97254\\Source\\Repos\\Mamalis\\MamaLis.csproj": {}
+    "C:\\Users\\97254\\source\\repos\\MamaLis\\MamaLis.csproj": {}
   },
   "projects": {
-    "C:\\Users\\97254\\Source\\Repos\\Mamalis\\MamaLis.csproj": {
+    "C:\\Users\\97254\\source\\repos\\MamaLis\\MamaLis.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\97254\\Source\\Repos\\Mamalis\\MamaLis.csproj",
+        "projectUniqueName": "C:\\Users\\97254\\source\\repos\\MamaLis\\MamaLis.csproj",
         "projectName": "MamaLis",
-        "projectPath": "C:\\Users\\97254\\Source\\Repos\\Mamalis\\MamaLis.csproj",
+        "projectPath": "C:\\Users\\97254\\source\\repos\\MamaLis\\MamaLis.csproj",
         "packagesPath": "C:\\Users\\97254\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\97254\\Source\\Repos\\Mamalis\\obj\\",
+        "outputPath": "C:\\Users\\97254\\source\\repos\\MamaLis\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
