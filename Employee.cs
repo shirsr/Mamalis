@@ -7,13 +7,29 @@
  */
 abstract class Employee
 {
-	protected string _employeeName;
-	protected string _employeeID;
-	protected string _jobTitle;
-	//Degree 
-	protected float _hoursOfWork;
-	protected float _salary;
+	protected string _employeeName
+	{ get { return this._employeeName; }
+		set { this._employeeName = value; }
+	}
+	protected string _employeeID
+	{
+		get { return this._employeeID; }
+		set { this._employeeID = value; }
+	}
+	protected string _jobTitle
+	{
+		get { return this._jobTitle; }
+		set { this._jobTitle = value; }
+	}
+	protected float _hoursOfWork
+	{
+		get { return this._hoursOfWork; }
+		set { this._hoursOfWork = value; }
+	}
+	
+	//protected float _salary;
+
+	public virtual float GetSalary() { return 179999; } //abstract method
 
 
-	public virtual float GetSalary() { return this._salary; } //abstract method
 }
