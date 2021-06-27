@@ -12,6 +12,6 @@ namespace MamaLis
         {
             //
         }
-        public override float GetSalary() { return 17999; }
+        public override float GetSalary() { return 1; }
     }
 }

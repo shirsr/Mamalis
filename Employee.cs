@@ -59,7 +59,6 @@ namespace MamaLis
 			end = int.Parse(Console.ReadLine());
 
 			this._hoursOfWork += (end-start);
-
 		}
 
 		public void PrintEmployee()
