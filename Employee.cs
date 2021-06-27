@@ -33,7 +33,7 @@ namespace MamaLis
 		Degree employeeDegree;
 
 
-		public Employee(string employeeName, string employeeID, string jobTitle, bool ifExpert, bool ifMakeDecisions, float extraRisk)
+		public Employee(string employeeName, string employeeID, string jobTitle, bool ifExpert, bool ifMakeDecisions, double extraRisk)
 		{ 
 			this._employeeName = employeeName;
 			this._employeeID = employeeID;

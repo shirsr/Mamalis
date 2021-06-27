@@ -89,9 +89,26 @@ namespace MamaLis
             }
             //Console.WriteLine("extra risk : {0}, expert: {1}, make decisions: {2}", extraRisk.ToString(), ifExpert.ToString(), ifMakeDesicions.ToString()); // for debug
 
-          //  Employee a = new Employee(name, id, jobTitle, ifExpert, ifMakeDesicions, extraRisk);
-
+            //Managers
+            if(jobTitleCode==(int)JobTitles.headOfAdministration || jobTitleCode==(int)JobTitles.deputyDirectorOfDepartment || jobTitleCode==(int)JobTitles.directorOfDepartment)
+            {
+                Employee m = new Manager(name,id,jobTitle,ifExpert,ifMakeDesicions,extraRisk); //Polymorphism
+                this.employeeStock.Add(id, m);
+            }
+            
+            if(jobTitleCode==(int)JobTitles.headCleaner || jobTitleCode==(int)JobTitles.cooker || jobTitleCode==(int)JobTitles.soChef || jobTitleCode==(int)JobTitles.chef || jobTitleCode==(int)JobTitles.buttockMidwife || jobTitleCode==(int)JobTitles.buttocStaserDoctor || jobTitleCode==(int)JobTitles.seniorDoctor)
+            {
+                Employee s = new SeniorEmployee(name, id, jobTitle, ifExpert, ifMakeDesicions, extraRisk); //Polymorphism
+                this.employeeStock.Add(id, s);
+            }
+            else
+            {
+                Employee j = new JuniorEmployee(name, id, jobTitle, ifExpert, ifMakeDesicions, extraRisk); //Polymorphism
+                this.employeeStock.Add(id, j);
+            }
         }
+
+
 
 
         //in this function the user choose the gob title
