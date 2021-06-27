@@ -7,8 +7,8 @@ namespace MamaLis
     class EmployeesSystem
     {
         /*
-         * This class containing and managing the functions of the system
-         */
+            This class containing and managing the functions of the system
+        */
 
 
         public enum JobTitles
@@ -51,7 +51,7 @@ namespace MamaLis
             }
             else
             {
-                Console.WriteLine("There is no employee with this ID in MAmaLis.");
+                Console.WriteLine("There is no employee with this ID in MamaLis.");
             }
         }
 
@@ -61,12 +61,25 @@ namespace MamaLis
             string id, name;
             bool ifExpert = false; //initilaized with false
             bool ifMakeDesicions = false; //initilaized with false
+            bool ifIdExist = true;
             int jobTitleCode;
             string jobTitle;
             double extraRisk = 0; //default thereis no extra risk
             Console.WriteLine("Welcome to Mamalis !");
-            Console.Write("Enter your ID: ");
-            id = Console.ReadLine();
+            do
+            {
+                Console.Write("Enter your ID: ");
+                id = Console.ReadLine();
+                if(employeeStock.ContainsKey(id))
+                {
+                    Console.WriteLine("this id is alredy exist, please enter another id for employee");
+                }
+                else
+                {
+                    ifIdExist = false;
+                }
+
+            } while (ifIdExist == true);
             Console.Write("Enter your name: ");
             name = Console.ReadLine();
             jobTitleCode = GetJobTitle();
@@ -153,6 +166,53 @@ namespace MamaLis
             return 0;//never happendb  
             
         }
+
+        public void mainMenu()
+        {
+            int choise = 0;
+            do
+            {
+                Console.WriteLine("Welcome to MamaLis !");
+                Console.WriteLine("please choose the action you want to perform :");
+                Console.WriteLine("to add new employee - enter 1");
+                Console.WriteLine("to enter work hours to an employee - enter 2");
+                Console.WriteLine("to print an employee's salary - enter 3");
+                Console.WriteLine("to exit - enter 9");
+                Console.Write("Your choise: ");
+                choise = int.Parse(Console.ReadLine());
+
+                if (choise != 1 && choise != 2 && choise != 3 && choise != 9)
+                {
+                    Console.WriteLine("please enter a valid number from the menu :)");
+                }
+                else
+                {
+
+                    if (choise == 1)
+                    {
+                        AddEmployee();
+                    }
+
+                    if (choise == 2)
+                    {
+
+                    }
+
+                    if (choise == 3)
+                    {
+                        
+                    }
+                    if (choise == 9)
+                    {
+                        Console.WriteLine("Goodbye and have a nice day");
+                    }
+                }
+
+            } while (choise != 9);
+
+        }
+
+
 
     }
 
