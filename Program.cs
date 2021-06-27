@@ -7,7 +7,8 @@ namespace MamaLis
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to MamaLis Project !");
-            
+            EmployeesSystem a = new EmployeesSystem();
+            a.AddEmployee();
         }
     }
 }
