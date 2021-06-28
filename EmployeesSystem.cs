@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace MamaLis
 {
@@ -45,12 +46,29 @@ namespace MamaLis
         public void ShowEmployee()
         {
             string id;
-            Console.Write("Please enter the is of the employee: ");
+            Console.Write("Please enter the id of the employee: ");
             id = Console.ReadLine();
             if (this.employeeStock.ContainsKey(id))
             {
                 Employee e = this.employeeStock[id];
                 e.PrintEmployee();
+            }
+            else
+            {
+                Console.WriteLine("There is no employee with this ID in MamaLis.");
+            }
+        }
+
+
+        public void addHours()
+        {
+            string id;
+            Console.Write("Please enter the id of the employee: ");
+            id = Console.ReadLine();
+            if (this.employeeStock.ContainsKey(id))
+            {
+                Employee e = this.employeeStock[id];
+                e.SetHoursOfWork();
             }
             else
             {
@@ -198,7 +216,7 @@ namespace MamaLis
 
                     if (choise == 2)
                     {
-
+                        addHours();
                     }
 
                     if (choise == 3)
@@ -213,6 +231,12 @@ namespace MamaLis
                 Console.WriteLine("\n \n \n");
             } while (choise != 9);
 
+        }
+
+        //This function get json eith employees detail and register them to the systemץ
+        public void initializedEmployees(string jsonFile)
+        {
+            //dynamic employeesJson = 
         }
 
 

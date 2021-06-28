@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "NUFgdvpV3B1NcDFfW8ieSgWInLU2aPLJIrTxxpNA6lmJ6ZnEXfRbGHG0t8ZXN51oBwHsuaj4r40KLTdcNpopYw==",
+  "dgSpecHash": "e6q/q2KVmc7LERERa9MDCrTHarHN6Njf2bo0vP/zbejMdOUwS+TcWD/D6FiOUC5ZJpHpGI7Ki/OqXM3cJU+ZZQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\97254\\source\\repos\\MamaLis\\MamaLis.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\97254\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
