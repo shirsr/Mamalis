@@ -42,9 +42,12 @@ namespace MamaLis
         public Dictionary<string, Employee> employeeStock = new Dictionary<string, Employee>();
 
         //this function gets id of employee and prints his/her details
-        public void ShowEmployee(string id)
+        public void ShowEmployee()
         {
-            if(this.employeeStock.ContainsKey(id))
+            string id;
+            Console.Write("Please enter the is of the employee: ");
+            id = Console.ReadLine();
+            if (this.employeeStock.ContainsKey(id))
             {
                 Employee e = this.employeeStock[id];
                 e.PrintEmployee();
@@ -109,7 +112,7 @@ namespace MamaLis
                 this.employeeStock.Add(id, m);
             }
             
-            if(jobTitleCode==(int)JobTitles.headCleaner || jobTitleCode==(int)JobTitles.cooker || jobTitleCode==(int)JobTitles.soChef || jobTitleCode==(int)JobTitles.chef || jobTitleCode==(int)JobTitles.buttockMidwife || jobTitleCode==(int)JobTitles.buttocStaserDoctor || jobTitleCode==(int)JobTitles.seniorDoctor)
+            else if(jobTitleCode==(int)JobTitles.headCleaner || jobTitleCode==(int)JobTitles.cooker || jobTitleCode==(int)JobTitles.soChef || jobTitleCode==(int)JobTitles.chef || jobTitleCode==(int)JobTitles.buttockMidwife || jobTitleCode==(int)JobTitles.buttocStaserDoctor || jobTitleCode==(int)JobTitles.seniorDoctor)
             {
                 Employee s = new SeniorEmployee(name, id, jobTitle, ifExpert, ifMakeDesicions, extraRisk); //Polymorphism
                 this.employeeStock.Add(id, s);
@@ -200,14 +203,14 @@ namespace MamaLis
 
                     if (choise == 3)
                     {
-                        
+                        ShowEmployee();
                     }
                     if (choise == 9)
                     {
                         Console.WriteLine("Goodbye and have a nice day");
                     }
                 }
-
+                Console.WriteLine("\n \n \n");
             } while (choise != 9);
 
         }
