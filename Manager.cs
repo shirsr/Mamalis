@@ -15,7 +15,7 @@ namespace MamaLis
         public override double GetSalary() 
         {
             double baseSalary =  Consts.managerSalary;
-            return (baseSalary + (this.employeeDegree.GetExtraRisk()));
+            return (baseSalary + (this._employeeDegree.GetExtraRisk()));
 
         }
     }
