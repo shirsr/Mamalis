@@ -4,11 +4,10 @@ using System.Text;
 
 namespace MamaLis
 {
-    class Consts
+    public static class Consts
     {
-        public int managerSalary = 10000;
-        public double hourSalaryAvg = 30.5;
-    
+        public const double hourSalaryAvg = 30.5;
+        public const double managerSalary = (200* 1.5*(hourSalaryAvg)); //manager get consts salary of 200 hours of work in 150%.
     }
 }
 

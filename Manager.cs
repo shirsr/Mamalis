@@ -12,6 +12,11 @@ namespace MamaLis
         {
             //
         }
-        public override float GetSalary() { return 1; }
+        public override double GetSalary() 
+        {
+            double baseSalary =  Consts.managerSalary;
+            return (baseSalary + (this.employeeDegree.GetExtraRisk()));
+
+        }
     }
 }

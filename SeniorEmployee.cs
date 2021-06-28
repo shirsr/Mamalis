@@ -12,6 +12,29 @@ namespace MamaLis
         {
             //
         }
-     public override float GetSalary() { return 179999; }
+     public override double GetSalary() 
+        {
+            double baseSalary;
+            double bonus = 0.05; //Senior bonus
+
+            if(this._employeeDegree.GetIfExpert())
+            {
+                bonus += 0.3; //expert bonus
+            }
+            if(this._employeeDegree.GetIfMakeDecisions())
+            {
+                bonus += 0.5;
+            }
+            baseSalary = Consts.hourSalaryAvg * this._hoursOfWork;
+            if ((this._hoursOfWork > 50) &&(this._employeeDegree.GetIfMakeDecisions()) )
+            {
+                baseSalary = Consts.managerSalary;
+            }
+
+            baseSalary += (baseSalary * bonus);
+            return (baseSalary + (this._employeeDegree.GetExtraRisk() * baseSalary));
+
+        }
+
     }
 }

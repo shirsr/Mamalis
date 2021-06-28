@@ -12,9 +12,12 @@ namespace MamaLis
         {
             //
         }
-        public override float GetSalary() 
+        public override double GetSalary() 
         {
-            return (1999);
+           // if(this.if)
+            double baseSalary;
+            baseSalary = base.GetSalary();
+            return (baseSalary + (this._employeeDegree.GetExtraRisk()*baseSalary ));
         } 
     }
 }

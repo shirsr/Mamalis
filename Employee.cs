@@ -14,7 +14,7 @@ namespace MamaLis
 		protected string _jobTitle;
 		protected double _hoursOfWork;
 
-		Degree employeeDegree;
+		protected Degree _employeeDegree;
 
 
 
@@ -47,22 +47,32 @@ namespace MamaLis
 
 
 
-		//Constructor
+		//Constructor for AddEmployee function
 		public Employee(string employeeName, string employeeID, string jobTitle, bool ifExpert, bool ifMakeDecisions, double extraRisk)
 		{ 
 			this._employeeName = employeeName;
 			this._employeeID = employeeID;
 			this._jobTitle = jobTitle;
 			this._hoursOfWork = 0; //new employee worked 0 hours yet.
-			this.employeeDegree = new Degree(ifExpert, ifMakeDecisions, extraRisk);			  
-		} 
-		
+			this._employeeDegree = new Degree(ifExpert, ifMakeDecisions, extraRisk);			  
+		}
+
+		//Constructor For Automatic add empliyee from employee stock.
+		public Employee(string employeeName, string employeeID, string jobTitle, bool ifExpert, bool ifMakeDecisions, double extraRisk, int hoursOfWork)
+		{
+			this._employeeName = employeeName;
+			this._employeeID = employeeID;
+			this._jobTitle = jobTitle;
+			this._hoursOfWork = hoursOfWork; //new employee worked 0 hours yet.
+			this._employeeDegree = new Degree(ifExpert, ifMakeDecisions, extraRisk);
+		}
+
 
 		//protected float _salary;
 
-		public virtual float GetSalary() 
+		public virtual double GetSalary() 
 		{
-			return 5;//(this._hoursOfWork * Consts.hourSalaryAvg); 
+			return (this._hoursOfWork*Consts.hourSalaryAvg);//(this._hoursOfWork * Consts.hourSalaryAvg); 
 		} 
 
 		public void PrintEmployee()

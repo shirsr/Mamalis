@@ -16,6 +16,16 @@ namespace MamaLis
             this._extraRisk = extrarisk;
         }
 
+        //Get and Set :
+        public double GetExtraRisk() { return this._extraRisk; }
+        public void SetExtraRisk(double NewExtraRisk) { this._extraRisk = NewExtraRisk;  }
+
+        public bool GetIfExpert() { return this._degreesDictionary["Expert"]; }
+        public void SetIfExpert(bool newExtraRisk) { this._degreesDictionary["Expert"] = newExtraRisk; }
+
+        public bool GetIfMakeDecisions() { return this._degreesDictionary["Make Decisions"]; }
+        public void SetIfMakeDecisions(bool newIfMakeDecisions) { this._degreesDictionary["Make Decisions"] = newIfMakeDecisions; }
+
 
     }
 }
