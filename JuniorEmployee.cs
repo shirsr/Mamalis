@@ -14,7 +14,6 @@ namespace MamaLis
         }
         public override double GetSalary() 
         {
-           // if(this.if)
             double baseSalary;
             baseSalary = base.GetSalary();
             return (baseSalary + (this._employeeDegree.GetExtraRisk()*baseSalary ));
