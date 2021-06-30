@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+using System.Text.Json;
+using Newtonsoft.Json.Linq;
+
 
 namespace MamaLis
 {
@@ -35,12 +37,12 @@ namespace MamaLis
             seniorDoctor = 19,
             expertDoctor = 20,
             deputyDirectorOfDepartment = 21,
-            directorOfDepartment=22
+            directorOfDepartment = 22
         };
 
-        
 
-        public Dictionary<string, Employee> employeeStock = new Dictionary<string, Employee>();
+
+        public Dictionary<string, Employee> employeeStock = new Dictionary<string, Employee>();//contains all the employee in the system.
 
         //this function gets id of employee and prints his/her details
         public void ShowEmployee()
@@ -59,8 +61,8 @@ namespace MamaLis
             }
         }
 
-
-        public void addHours()
+        // TUI to add hours to an employee.
+        public void AddHours()
         {
             string id;
             Console.Write("Please enter the id of the employee: ");
@@ -77,21 +79,17 @@ namespace MamaLis
         }
 
         //This function is a TUI of adding new employee to MamaLis
-        public void AddEmployee()
+        public void GetEmoloyeeDetails()
         {
             string id, name;
-            bool ifExpert = false; //initilaized with false
-            bool ifMakeDesicions = false; //initilaized with false
             bool ifIdExist = true;
             int jobTitleCode;
-            string jobTitle;
-            double extraRisk = 0; //default thereis no extra risk
             Console.WriteLine("Welcome to Mamalis !");
             do
             {
                 Console.Write("Enter your ID: ");
                 id = Console.ReadLine();
-                if(employeeStock.ContainsKey(id))
+                if (employeeStock.ContainsKey(id))
                 {
                     Console.WriteLine("this id is alredy exist, please enter another id for employee");
                 }
@@ -104,44 +102,36 @@ namespace MamaLis
             Console.Write("Enter your name: ");
             name = Console.ReadLine();
             jobTitleCode = GetJobTitle();
-            jobTitle = Enum.GetName(typeof(JobTitles), jobTitleCode);
-            if(jobTitleCode == (int)(JobTitles.cleanerToxics) || jobTitleCode == (int) JobTitles.buttockMidwife || jobTitleCode==(int)JobTitles.expertDoctor || jobTitleCode == (int) JobTitles.buttocStaserDoctor || jobTitleCode==(int)JobTitles.soChef || jobTitleCode == (int)(JobTitles.chef))
-            {
-                ifExpert = true;
-            }
-            if(jobTitleCode==(int)JobTitles.cleanerToxics || jobTitleCode==(int)JobTitles.cleanerShiftManager || jobTitleCode==(int)JobTitles.expertDoctor || jobTitleCode==(int)JobTitles.chef || jobTitleCode==(int)JobTitles.headOfAdministration || jobTitleCode==(int)JobTitles.headNurse || jobTitleCode==(int)JobTitles.seniorDoctor || jobTitleCode==(int)JobTitles.deputyDirectorOfDepartment || jobTitleCode==(int)JobTitles.directorOfDepartment)
-            {
-                ifMakeDesicions = true;    
-            } 
-            if(jobTitleCode==(int)JobTitles.cleanerToxics)
-            {
-                extraRisk = 0.2;
-            }
-            if (jobTitleCode == (int)JobTitles.directorOfDepartment)
-            {
-                extraRisk = 1;
-            }
-            //Console.WriteLine("extra risk : {0}, expert: {1}, make decisions: {2}", extraRisk.ToString(), ifExpert.ToString(), ifMakeDesicions.ToString()); // for debug
+            CreateNewEmployee(id, name, jobTitleCode, 0); //new employee always continued with 0 hours of work.
+        }
 
+
+        //this function Gets Employee parameters and create new employee
+        public void CreateNewEmployee(string id, string name, int jobTitleCode, double hoursOfWork)
+        {
+            
+            string jobTitle = Enum.GetName(typeof(JobTitles), jobTitleCode);
+            bool ifExpert = GetIfExpert(jobTitleCode);
+            bool ifMakeDesicions = GetIfMakeDecisions(jobTitleCode);
+            double extraRisk = GetExtraRisk(jobTitleCode);
             //Managers
-            if(jobTitleCode==(int)JobTitles.headOfAdministration || jobTitleCode==(int)JobTitles.deputyDirectorOfDepartment || jobTitleCode==(int)JobTitles.directorOfDepartment)
+            if (jobTitleCode == (int)JobTitles.headOfAdministration || jobTitleCode == (int)JobTitles.deputyDirectorOfDepartment || jobTitleCode == (int)JobTitles.directorOfDepartment)
             {
-                Employee m = new Manager(name,id,jobTitle,ifExpert,ifMakeDesicions,extraRisk); //Polymorphism
+                Employee m = new Manager(name, id, jobTitle, ifExpert, ifMakeDesicions, extraRisk, hoursOfWork); //Polymorphism
                 this.employeeStock.Add(id, m);
             }
-            
-            else if(jobTitleCode==(int)JobTitles.headCleaner || jobTitleCode==(int)JobTitles.cooker || jobTitleCode==(int)JobTitles.soChef || jobTitleCode==(int)JobTitles.chef || jobTitleCode==(int)JobTitles.buttockMidwife || jobTitleCode==(int)JobTitles.buttocStaserDoctor || jobTitleCode==(int)JobTitles.seniorDoctor)
+
+            else if (jobTitleCode == (int)JobTitles.headCleaner || jobTitleCode == (int)JobTitles.cooker || jobTitleCode == (int)JobTitles.soChef || jobTitleCode == (int)JobTitles.chef || jobTitleCode == (int)JobTitles.buttockMidwife || jobTitleCode == (int)JobTitles.buttocStaserDoctor || jobTitleCode == (int)JobTitles.seniorDoctor)
             {
-                Employee s = new SeniorEmployee(name, id, jobTitle, ifExpert, ifMakeDesicions, extraRisk); //Polymorphism
+                Employee s = new SeniorEmployee(name, id, jobTitle, ifExpert, ifMakeDesicions, extraRisk, hoursOfWork); //Polymorphism
                 this.employeeStock.Add(id, s);
             }
             else
             {
-                Employee j = new JuniorEmployee(name, id, jobTitle, ifExpert, ifMakeDesicions, extraRisk); //Polymorphism
+                Employee j = new JuniorEmployee(name, id, jobTitle, ifExpert, ifMakeDesicions, extraRisk, hoursOfWork); //Polymorphism
                 this.employeeStock.Add(id, j);
             }
         }
-
 
 
 
@@ -180,15 +170,16 @@ namespace MamaLis
                 {
                     return choise;
                 }
-                
+
                 Console.WriteLine("please enter a valid job title number");
                 choise = 0;
-            }      
+            }
             return 0;//never happendb  
-            
+
         }
 
-        public void mainMenu()
+        //The Main Menu TUI For The Users.
+        public void MainMenu()
         {
             int choise = 0;
             do
@@ -211,12 +202,12 @@ namespace MamaLis
 
                     if (choise == 1)
                     {
-                        AddEmployee();
+                        GetEmoloyeeDetails();
                     }
 
                     if (choise == 2)
                     {
-                        addHours();
+                        AddHours();
                     }
 
                     if (choise == 3)
@@ -233,14 +224,77 @@ namespace MamaLis
 
         }
 
-        //This function get json eith employees detail and register them to the systemץ
-        public void initializedEmployees(string jsonFile)
+        //this function gets jobTitleCode and returns if this job is an expert.
+        public bool GetIfExpert(int jobTitleCode)
         {
-            //dynamic employeesJson = 
+            bool ifExpert = false;
+            if (jobTitleCode == (int)(JobTitles.cleanerToxics) || jobTitleCode == (int)JobTitles.buttockMidwife || jobTitleCode == (int)JobTitles.expertDoctor || jobTitleCode == (int)JobTitles.buttocStaserDoctor || jobTitleCode == (int)JobTitles.soChef || jobTitleCode == (int)(JobTitles.chef))
+            {
+                ifExpert = true;
+            }
+
+            return ifExpert;
+        }
+
+        //this function gets jobTitleCode and returns if this job is making decisions.
+        public bool GetIfMakeDecisions(int jobTitleCode)
+        {
+            bool ifMakeDesicion = false;
+            if (jobTitleCode == (int)JobTitles.cleanerToxics || jobTitleCode == (int)JobTitles.cleanerShiftManager || jobTitleCode == (int)JobTitles.expertDoctor || jobTitleCode == (int)JobTitles.chef || jobTitleCode == (int)JobTitles.headOfAdministration || jobTitleCode == (int)JobTitles.headNurse || jobTitleCode == (int)JobTitles.seniorDoctor || jobTitleCode == (int)JobTitles.deputyDirectorOfDepartment || jobTitleCode == (int)JobTitles.directorOfDepartment)
+            {
+                ifMakeDesicion = true;
+            }
+
+            return ifMakeDesicion;
+        }
+
+        //this function gets jobTitleCode and returns the extra risk adding to the salary.
+        public double GetExtraRisk(int jobTitleCode)
+        {
+            double extraRisk = 0;//by default there is no extra risk.
+            if (jobTitleCode == (int)JobTitles.cleanerToxics)
+            {
+                extraRisk = 0.2;
+            }
+            if (jobTitleCode == (int)JobTitles.directorOfDepartment)
+            {
+                extraRisk = 1;
+            }
+
+            return extraRisk;
         }
 
 
+        //This function initialized Employees To the system
+        public void initializeEmployees()
+        {
+            CreateNewEmployee("00000001", "Nikita",1, 26);
+            CreateNewEmployee("00000002", "Hadba Ra", 2,19);
+            CreateNewEmployee("00000003", "Mav Rick", 3, 4);
+            CreateNewEmployee("00000004", "Sa Bon", 4, 26);
+            CreateNewEmployee("00000005", "Ma Rit", 5, 26);
+            CreateNewEmployee("00000006", "Mishlen Star", 6, 26);
+            CreateNewEmployee("00000007", "Mishlen Moon", 7, 6);
+            CreateNewEmployee("00000008", "Gastro Nom", 8, 26);
+            CreateNewEmployee("00000009", "Shali Shoot", 9, 26);
+            CreateNewEmployee("00000010", "Balada La", 10, 12);
+            CreateNewEmployee("00000012", "Kovea Mavet", 11, 26);
+            CreateNewEmployee("00000013", "Sis Ter", 12, 26);
+            CreateNewEmployee("00000014", "Expensive Sister", 13, 32);
+            CreateNewEmployee("00000015", "Tilche Tzi", 14, 45);
+            CreateNewEmployee("00000016", "Tichetzi Hazak", 15, 54);
+            CreateNewEmployee("00000017", "Nechfaf", 16, 43);
+            CreateNewEmployee("00000018", "Nechfaf Acuz", 17, 42);
+            CreateNewEmployee("00000019", "Gime Lim", 18, 43);
+            CreateNewEmployee("00000020", "Ram Shtaim", 19, 14);
+            CreateNewEmployee("00000021", "Ram Daled", 20, 56);
+            CreateNewEmployee("00000022", "Saran 750", 21, 60);
+            CreateNewEmployee("00000023", "Rahan 750", 22, 50);
+            CreateNewEmployee("00000024", "Boss Chabshan", 4, 10);
 
+
+        }
+            
     }
-
 }
+

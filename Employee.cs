@@ -48,23 +48,14 @@ namespace MamaLis
 
 
 		//Constructor for AddEmployee function
-		public Employee(string employeeName, string employeeID, string jobTitle, bool ifExpert, bool ifMakeDecisions, double extraRisk)
+		public Employee(string employeeName, string employeeID, string jobTitle, bool ifExpert, bool ifMakeDecisions, double extraRisk, double hoursOfWork)
 		{ 
 			this._employeeName = employeeName;
 			this._employeeID = employeeID;
 			this._jobTitle = jobTitle;
 			this._hoursOfWork = 0; //new employee worked 0 hours yet.
-			this._employeeDegree = new Degree(ifExpert, ifMakeDecisions, extraRisk);			  
-		}
-
-		//Constructor For Automatic add empliyee from employee stock.
-		public Employee(string employeeName, string employeeID, string jobTitle, bool ifExpert, bool ifMakeDecisions, double extraRisk, int hoursOfWork)
-		{
-			this._employeeName = employeeName;
-			this._employeeID = employeeID;
-			this._jobTitle = jobTitle;
-			this._hoursOfWork = hoursOfWork; //new employee worked 0 hours yet.
 			this._employeeDegree = new Degree(ifExpert, ifMakeDecisions, extraRisk);
+			this._hoursOfWork = hoursOfWork;
 		}
 
 

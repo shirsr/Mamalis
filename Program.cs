@@ -8,7 +8,11 @@ namespace MamaLis
         {
             Console.WriteLine("Welcome to MamaLis Project !");
             EmployeesSystem a = new EmployeesSystem();
-            a.mainMenu();
+            a.initializeEmployees();
+            a.MainMenu();
+           
+
+
         }
     }
 }

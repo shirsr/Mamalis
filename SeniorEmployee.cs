@@ -8,7 +8,7 @@ namespace MamaLis
     {
 
 
-    public SeniorEmployee(string employeeName, string employeeID, string jobTitle, bool ifExpert, bool ifMakeDecisions, double extraRisk) : base(employeeName, employeeID, jobTitle, ifExpert, ifMakeDecisions, extraRisk)
+    public SeniorEmployee(string employeeName, string employeeID, string jobTitle, bool ifExpert, bool ifMakeDecisions, double extraRisk, double horsOfWork) : base(employeeName, employeeID, jobTitle, ifExpert, ifMakeDecisions, extraRisk, horsOfWork)
         {
             //
         }
