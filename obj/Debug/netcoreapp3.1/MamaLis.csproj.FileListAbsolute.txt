@@ -1,0 +1,15 @@
+C:\Users\97254\Source\Repos\Mamalis\bin\Debug\netcoreapp3.1\MamaLis.exe
+C:\Users\97254\Source\Repos\Mamalis\bin\Debug\netcoreapp3.1\MamaLis.deps.json
+C:\Users\97254\Source\Repos\Mamalis\bin\Debug\netcoreapp3.1\MamaLis.runtimeconfig.json
+C:\Users\97254\Source\Repos\Mamalis\bin\Debug\netcoreapp3.1\MamaLis.runtimeconfig.dev.json
+C:\Users\97254\Source\Repos\Mamalis\bin\Debug\netcoreapp3.1\MamaLis.dll
+C:\Users\97254\Source\Repos\Mamalis\bin\Debug\netcoreapp3.1\MamaLis.pdb
+C:\Users\97254\Source\Repos\Mamalis\obj\Debug\netcoreapp3.1\MamaLis.csprojAssemblyReference.cache
+C:\Users\97254\Source\Repos\Mamalis\obj\Debug\netcoreapp3.1\MamaLis.AssemblyInfoInputs.cache
+C:\Users\97254\Source\Repos\Mamalis\obj\Debug\netcoreapp3.1\MamaLis.AssemblyInfo.cs
+C:\Users\97254\Source\Repos\Mamalis\obj\Debug\netcoreapp3.1\MamaLis.dll
+C:\Users\97254\Source\Repos\Mamalis\obj\Debug\netcoreapp3.1\MamaLis.pdb
+C:\Users\97254\Source\Repos\Mamalis\obj\Debug\netcoreapp3.1\MamaLis.genruntimeconfig.cache
+C:\Users\97254\source\repos\MamaLis\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\97254\source\repos\MamaLis\obj\Debug\netcoreapp3.1\MamaLis.csproj.CoreCompileInputs.cache
+C:\Users\97254\source\repos\MamaLis\obj\Debug\netcoreapp3.1\MamaLis.csproj.CopyComplete
